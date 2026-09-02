@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Blog Home  {% endblock title %}
+{% block title %}Search Result  {% endblock title %}
 
 {% block body %}
 <div class="container">
-    <h2>Coding article by Bhupi's Blog</h2>
+    <h2>Search Results for "{{ param }}"</h2>
     <div class="container">
   <h2>Latest Articles</h2>
-  {% for post in posts %}
+  {% for post in post %}
 
   <<div class="row mb-2">
     <div class="col-md-6">

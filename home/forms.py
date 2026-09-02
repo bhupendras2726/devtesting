@@ -7,6 +7,7 @@ class ContactForm(forms.Form):
             "placeholder": "Enter your name"
         })
     )
+    
 
     email = forms.EmailField(
         required=True,

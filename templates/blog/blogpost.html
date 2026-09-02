@@ -3,6 +3,9 @@
 {% block title %}Blog Post{% endblock title %}
 
 {% block body %}
-    <h2>Blog Post</h2>
-    <p>This is a blog post with slug: {{ slug }}</p>
+
+    <h2>{{ post.title }}</h2>
+    <p>Author: {{ post.author }}</p>
+    <p>{{ post.content }}</p>
+
 {% endblock body %}

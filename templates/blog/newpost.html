@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Create New Post{% endblock title %}
+
+{% block body %}
+
+<div class="container my-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+                    <h3 class="mb-0">Create New Post</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <!-- Title -->
+                        <div class="mb-3">
+                            <label for="title" class="form-label">
+                                Title
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="title"
+                                name="title"
+                                placeholder="Enter post title"
+                                required
+                            >
+                        </div>
+
+                        <!-- Author -->
+                        <div class="mb-3">
+                            <label for="author" class="form-label">
+                                Author
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="author"
+                                name="author"
+                                placeholder="Enter author name"
+                                required
+                            >
+                        </div>
+
+                        <!-- Content -->
+                        <div class="mb-3">
+                            <label for="content" class="form-label">
+                                Content
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="content"
+                                name="content"
+                                rows="8"
+                                placeholder="Write your post here..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <!-- Publish Button -->
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+                            Publish
+                        </button>
+
+                        <a
+                            href="/bloghome/"
+                            class="btn btn-secondary ms-2">
+                            Cancel
+                        </a>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock body %}
