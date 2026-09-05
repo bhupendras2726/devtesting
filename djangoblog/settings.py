@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    "events.apps.EventsConfig",    
     "blog.apps.BlogConfig",
     "home.apps.HomeConfig",
     "django.contrib.admin",
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+     # Django REST Framework
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
