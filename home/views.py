@@ -11,17 +11,7 @@ def home(request):
      fname = request.session.get('fname')
      return render(request, 'home/index.html', {'fname': fname})
 
-# def contact(request):
-    # if request.method == 'POST':
-    #     name = request.POST.get('name')
-    #     email = request.POST.get('email')
-    #     phone = request.POST.get('phone')
-    #     desc = request.POST.get('desc')
-    #     contact = Contact(name=name, email=email, phone=phone, description = desc)
-    #     contact.save()
-    #     return render(request, 'home/contact.html', {'message': 'Your message has been sent successfully!'})
-    
-    # return render(request, 'home/contact.html')
+
 def contact(request):
     if request.method == "POST":
         form = ContactForm(request.POST)

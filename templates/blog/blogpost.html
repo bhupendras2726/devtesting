@@ -4,8 +4,82 @@
 
 {% block body %}
 
-    <h2>{{ post.title }}</h2>
-    <p>Author: {{ post.author }}</p>
-    <p>{{ post.content }}</p>
+<h2>{{ post.title }}</h2>
+<p>Author: {{ post.author }}</p>
+<p>{{ post.content }}</p>
+<div class="container">
+    <h2>Comments</h2>
+    <form method="POST" action="{% url 'postComment' %}">
+        {% csrf_token %}
+        <input type="text" class="form-control" name="comment" placeholder="Add a comment">
+        <input type="hidden" class="text" name="post_id" value="{{ post.sno }}">
+        <input type="submit" value="Submit" class="btn btn-primary mt-2">
+    </form>
 
+  <div class="container mt-5">
+
+    <h4 class="mb-4">
+        💬 Comments
+        <span class="badge badge-secondary">{{ comments|length }}</span>
+    </h4>
+
+    {% for comment in comments %}
+
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+
+            <div class="row">
+
+                <!-- User -->
+                <div class="col-md-2 text-center">
+
+                    <div class="mb-2">
+                        <div class="rounded-circle bg-primary text-white d-inline-flex
+                                    justify-content-center align-items-center"
+                             style="width:50px; height:50px; font-size:20px;">
+                            {{ comment.user.username|first|upper }}
+                        </div>
+                    </div>
+
+                    <strong>{{ comment.user.username }}</strong>
+
+                </div>
+
+                <!-- Comment -->
+                <div class="col-md-10">
+
+                    <div class="d-flex justify-content-between">
+                        <strong class="text-primary">
+                            {{ comment.user.first_name }}
+                            {{ comment.user.last_name }}
+                        </strong>
+
+                        <small class="text-muted">
+                            {{ comment.timestamp|date:"M d, Y H:i" }}
+                        </small>
+                    </div>
+
+                    <hr>
+
+                    <p class="mb-0 text-muted">
+                        {{ comment.comment }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% empty %}
+
+    <div class="alert alert-light border text-center">
+        💬 No comments yet. Be the first to comment!
+    </div>
+
+    {% endfor %}
+
+</div>
+</div>
 {% endblock body %}

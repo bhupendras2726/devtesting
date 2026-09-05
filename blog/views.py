@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render
 from blog.models import Post
 from django.utils.text import slugify
-
+from blog.models import Blogcomment
+from django.contrib import messages
 # Create your views here.
 
 def blogHome(request):
@@ -29,7 +30,27 @@ def newPost(request):
 
 def blogPost(request, slug):
     post = Post.objects.get(slug=slug)
+    comments =Blogcomment.objects.filter(post=post, parent=None)
     context = {
-        'post': post
+        'post': post,
+        'comments': comments
     }
-    return render(request, 'blog/blogpost.html', {'post': post})
+    return render(request, 'blog/blogpost.html', context)
+
+
+def postComment(request):
+    if request.method == "POST":
+        comment = request.POST.get("comment")
+        user = request.user
+        postsno = request.POST.get("post_id")
+        post = Post.objects.get(sno=postsno)
+        print(comment, user,postsno, post)
+        
+        comment = Blogcomment(comment=comment, user=user, post=post)
+        comment.save()
+        messages.success(request, "Your comment has been posted successfully")
+        return redirect(f"/bloghome/{post.slug}")
+    else:
+        return redirect("/bloghome/")
+
+        
