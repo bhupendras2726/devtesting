@@ -17,7 +17,7 @@
 
                 <div class="card-body">
 
-                    <form method="POST">
+                    <form method="POST" action="/bloghome/newpost/">
                         {% csrf_token %}
 
                         <!-- Title -->
@@ -26,14 +26,8 @@
                                 Title
                             </label>
 
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="title"
-                                name="title"
-                                placeholder="Enter post title"
-                                required
-                            >
+                            <input type="text" class="form-control" id="title" name="title"
+                                placeholder="Enter post title" required>
                         </div>
 
                         <!-- Author -->
@@ -42,14 +36,8 @@
                                 Author
                             </label>
 
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="author"
-                                name="author"
-                                placeholder="Enter author name"
-                                required
-                            >
+                            <input type="text" class="form-control" id="author" name="author"
+                                placeholder="Enter author name" required>
                         </div>
 
                         <!-- Content -->
@@ -58,26 +46,23 @@
                                 Content
                             </label>
 
-                            <textarea
-                                class="form-control"
-                                id="content"
-                                name="content"
-                                rows="8"
-                                placeholder="Write your post here..."
-                                required
-                            ></textarea>
+                            <textarea class="form-control" id="content" name="content" rows="12"
+                                placeholder="Write your post here..." required></textarea>
                         </div>
+                        <div class="mb-3">
+                            <label for="keywords" class="form-label">
+                                Keywords
+                            </label>
 
+                            <input type="text" class="form-control" id="keywords" name="keywords"
+                                placeholder="Enter keywords" required>
+                        </div>
                         <!-- Publish Button -->
-                        <button
-                            type="submit"
-                            class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary">
                             Publish
                         </button>
 
-                        <a
-                            href="/bloghome/"
-                            class="btn btn-secondary ms-2">
+                        <a href="/bloghome/" class="btn btn-secondary ms-2">
                             Cancel
                         </a>
 
